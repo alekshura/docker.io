@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:  
+  database:
+    environment:
+     - SA_PASSWORD=sa@Passw0rd
+     - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"

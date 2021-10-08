@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver-db
+    command: /bin/bash ./entrypoint.sh
+    networks:
+      - networkname
+    volumes:
+      - dbdata:/var/opt/mssql/data
+      - ./database/docker-entrypoint.sh:/entrypoint.sh
+      - ./database/docker-db-init.sh:/db-init.sh
+      - ./database/database-db-init.sql:/database-db-init.sql
+
+volumes:
+  dbdata:
+
+networks:
+  networkname:
+    external: true
